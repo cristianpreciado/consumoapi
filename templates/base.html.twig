@@ -2,11 +2,30 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Clima{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('index') }}">Busqueda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('clima_historial') }}">Historial</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script>
+                const guardarhistorial = "{{ path('clima_historial_crear')|escape('js') }}";
+            </script>
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 </html>

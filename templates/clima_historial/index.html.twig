@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Ciudad</th>
+      <th scope="col">Temperatura</th>
+      <th scope="col">Humedad</th>
+      <th scope="col">Preción</th>
+      <th scope="col">Latitud</th>
+      <th scope="col">Longitud</th>
+      <th scope="col">Fecha consulta</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for clima in historial %}
+        <tr>
+            <th scope="row">{{clima.id}}</th>
+            <td>{{clima.ciudad}}</td>
+            <td>{{clima.temperatura}}</td>
+            <td>{{clima.humedad}}</td>
+            <td>{{clima.presion}}</td>
+            <td>{{clima.latitud}}</td>
+            <td>{{clima.longitud}}</td>
+            <td>{{clima.fecha|date("Y-m-d H:i:s")}}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
